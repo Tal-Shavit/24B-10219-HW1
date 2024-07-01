@@ -49,9 +49,10 @@ class ViewController: UIViewController {
             main_IMG_card1.image = imagesPalyer1[currentIndex]
             main_IMG_card2.image = imagesPalyer2[currentIndex]
             
-            var value1: Int? = cardValues[imageName1]
-            main_LBL_number1.text = ֿֿvalue1
-            main_LBL_number2.text = imageName2;
+            if let value1 = cardValues[imageName1], let value2 = cardValues[imageName2]{
+                main_LBL_number1.text = "\(value1)"
+                main_LBL_number2.text = "\(value2)"
+            }
             
             currentIndex += 1
         }
