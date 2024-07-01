@@ -13,10 +13,14 @@ class ViewController: UIViewController {
     @IBOutlet weak var main_IMG_card2: UIImageView!
     @IBOutlet weak var main_LBL_number1: UILabel!
     @IBOutlet weak var main_LBL_number2: UILabel!
+    @IBOutlet weak var main_LBL_score1: UILabel!
+    @IBOutlet weak var main_LBL_score2: UILabel!
     
     private var imagesPalyer1 = [#imageLiteral(resourceName: "8_of_spades"), #imageLiteral(resourceName: "2_of_diamonds"), #imageLiteral(resourceName: "9_of_hearts"), #imageLiteral(resourceName: "1_of_clubs"), #imageLiteral(resourceName: "3_of_diamonds"), #imageLiteral(resourceName: "2_of_diamonds"), #imageLiteral(resourceName: "10_of_clubs"), #imageLiteral(resourceName: "7_of_spades"), #imageLiteral(resourceName: "3_of_diamonds"), #imageLiteral(resourceName: "1_of_spades")]
     private var imagesPalyer2 = [#imageLiteral(resourceName: "3_of_diamonds"), #imageLiteral(resourceName: "11_of_hearts"), #imageLiteral(resourceName: "4_of_clubs"), #imageLiteral(resourceName: "12_of_clubs"), #imageLiteral(resourceName: "2_of_clubs"), #imageLiteral(resourceName: "3_of_diamonds"), #imageLiteral(resourceName: "12_of_clubs"), #imageLiteral(resourceName: "9_of_spades"), #imageLiteral(resourceName: "1_of_hearts"), #imageLiteral(resourceName: "1_of_diamonds")]
     var currentIndex = 0
+    var score1 = 0
+    var score2 = 0
     
     let cardValues: [String: Int] = [
         "8_of_spades": 8,
@@ -52,24 +56,16 @@ class ViewController: UIViewController {
             if let value1 = cardValues[imageName1], let value2 = cardValues[imageName2]{
                 main_LBL_number1.text = "\(value1)"
                 main_LBL_number2.text = "\(value2)"
+                updateScores(for: value1, and: value2)
             }
             
+    
             currentIndex += 1
         }
         else{
-            currentIndex = 0
-            let imageName1 = getImageName(for: imagesPalyer1[currentIndex])
-            let imageName2 = getImageName(for: imagesPalyer2[currentIndex])
-            
-            main_IMG_card1.image = imagesPalyer1[currentIndex]
-            main_IMG_card2.image = imagesPalyer2[currentIndex]
-            
-            main_LBL_number1.text = imageName1;
-            main_LBL_number2.text = imageName2;
-            
-            currentIndex += 1
+            main_LBL_number1.text = "game over"
+            main_LBL_number2.text = "game over"
         }
-        
     }
     
     func getImageName(for image: UIImage) -> String{
@@ -79,5 +75,18 @@ class ViewController: UIViewController {
         return ""
     }
     
+    func updateScores(for player1:Int, and player2: Int){
+        if(player1 > player2){
+            score1 += 1
+        }else{
+            score2 += 1
+        }
+        updateTxtScore()
+    }
+    
+    func updateTxtScore(){
+        main_LBL_score1.text = "\(score1)"
+        main_LBL_score2.text = "\(score2)"
+    }
 }
 
