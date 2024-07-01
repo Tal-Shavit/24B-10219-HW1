@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="_4B_10219_HW1" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="10_of_clubs" translatesAutoresizingMaskIntoConstraints="NO" id="DV8-VS-Egc">
+                                <rect key="frame" x="121.66666666666669" y="91" width="150" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="LJw-TC-r59"/>
+                                    <constraint firstAttribute="width" constant="150" id="ZmZ-9k-KDd"/>
+                                </constraints>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="10_of_diamonds" translatesAutoresizingMaskIntoConstraints="NO" id="fSP-cY-qcy">
+                                <rect key="frame" x="121.66666666666669" y="586" width="150" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="3Hc-6l-WTP"/>
+                                    <constraint firstAttribute="height" constant="200" id="yd9-f2-zls"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OcE-sw-dIJ">
+                                <rect key="frame" x="159" y="408.66666666666669" width="75" height="35"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="gray" title="Button"/>
+                                <connections>
+                                    <action selector="onClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="qzw-FS-O9d"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemGreenColor"/>
+                        <constraints>
+                            <constraint firstItem="DV8-VS-Egc" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="32" id="N3U-vb-oTM"/>
+                            <constraint firstItem="OcE-sw-dIJ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Xqj-88-8qT"/>
+                            <constraint firstItem="fSP-cY-qcy" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="dGv-ZO-280"/>
+                            <constraint firstItem="DV8-VS-Egc" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="s6K-48-D9F"/>
+                            <constraint firstItem="OcE-sw-dIJ" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="w33-1e-KAc"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="fSP-cY-qcy" secondAttribute="bottom" constant="32" id="ydn-5l-Hb8"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="main_IMG_card1" destination="DV8-VS-Egc" id="lJd-4M-aW8"/>
+                        <outlet property="main_IMG_card2" destination="fSP-cY-qcy" id="aoQ-dA-qZF"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="20.610687022900763" y="4.9295774647887329"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="10_of_clubs" width="500" height="726"/>
+        <image name="10_of_diamonds" width="500" height="726"/>
+        <systemColor name="systemGreenColor">
+            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>
