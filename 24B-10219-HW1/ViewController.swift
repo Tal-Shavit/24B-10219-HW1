@@ -16,11 +16,13 @@ class ViewController: UIViewController {
     @IBOutlet weak var main_LBL_score1: UILabel!
     @IBOutlet weak var main_LBL_score2: UILabel!
     
-    private var imagesPalyer1 = [#imageLiteral(resourceName: "8_of_spades"), #imageLiteral(resourceName: "2_of_diamonds"), #imageLiteral(resourceName: "9_of_hearts"), #imageLiteral(resourceName: "1_of_clubs"), #imageLiteral(resourceName: "3_of_diamonds"), #imageLiteral(resourceName: "2_of_diamonds"), #imageLiteral(resourceName: "10_of_clubs"), #imageLiteral(resourceName: "7_of_spades"), #imageLiteral(resourceName: "3_of_diamonds"), #imageLiteral(resourceName: "1_of_spades")]
-    private var imagesPalyer2 = [#imageLiteral(resourceName: "3_of_diamonds"), #imageLiteral(resourceName: "11_of_hearts"), #imageLiteral(resourceName: "4_of_clubs"), #imageLiteral(resourceName: "12_of_clubs"), #imageLiteral(resourceName: "2_of_clubs"), #imageLiteral(resourceName: "3_of_diamonds"), #imageLiteral(resourceName: "12_of_clubs"), #imageLiteral(resourceName: "9_of_spades"), #imageLiteral(resourceName: "1_of_hearts"), #imageLiteral(resourceName: "1_of_diamonds")]
+    var imagesPlayer1 = [#imageLiteral(resourceName: "8_of_spades"), #imageLiteral(resourceName: "2_of_diamonds"), #imageLiteral(resourceName: "9_of_hearts"), #imageLiteral(resourceName: "1_of_clubs"), #imageLiteral(resourceName: "3_of_diamonds"), #imageLiteral(resourceName: "2_of_diamonds"), #imageLiteral(resourceName: "10_of_clubs"), #imageLiteral(resourceName: "7_of_spades"), #imageLiteral(resourceName: "3_of_diamonds"), #imageLiteral(resourceName: "1_of_spades")]
+    var imagesPlayer2 = [#imageLiteral(resourceName: "3_of_diamonds"), #imageLiteral(resourceName: "11_of_hearts"), #imageLiteral(resourceName: "4_of_clubs"), #imageLiteral(resourceName: "12_of_clubs"), #imageLiteral(resourceName: "2_of_clubs"), #imageLiteral(resourceName: "3_of_diamonds"), #imageLiteral(resourceName: "12_of_clubs"), #imageLiteral(resourceName: "9_of_spades"), #imageLiteral(resourceName: "1_of_hearts"), #imageLiteral(resourceName: "1_of_diamonds")]
     var currentIndex = 0
     var score1 = 0
     var score2 = 0
+    var myDetector: Detector?
+    
     
     let cardValues: [String: Int] = [
         "8_of_spades": 8,
@@ -42,51 +44,40 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        myDetector = Detector(callBack: self, cardValues: cardValues, imagesPlayer1: imagesPlayer1, imagesPlayer2: imagesPlayer2)
+        myDetector?.startGame()
     }
-
-    @IBAction func onClick(_ sender: Any) {
-        if (currentIndex < imagesPalyer1.count){
-            let imageName1 = getImageName(for: imagesPalyer1[currentIndex])
-            let imageName2 = getImageName(for: imagesPalyer2[currentIndex])
             
-            main_IMG_card1.image = imagesPalyer1[currentIndex]
-            main_IMG_card2.image = imagesPalyer2[currentIndex]
-            
-            if let value1 = cardValues[imageName1], let value2 = cardValues[imageName2]{
-                main_LBL_number1.text = "\(value1)"
-                main_LBL_number2.text = "\(value2)"
-                updateScores(for: value1, and: value2)
-            }
-            
-    
+    func updateUI(card1Value: Int?, card2Value: Int?) {
+        if currentIndex < imagesPlayer1.count {
+            let card1 = imagesPlayer1[currentIndex]
+            let card2 = imagesPlayer2[currentIndex]
+                    
+            main_IMG_card1.image = card1
+            main_IMG_card2.image = card2
+                    
+            main_LBL_number1.text = "\(card1Value)"
+            main_LBL_number2.text = "\(card2Value)"
+            main_LBL_score1.text = "\(score1)"
+            main_LBL_score2.text = "\(score2)"
+                    
             currentIndex += 1
         }
-        else{
-            main_LBL_number1.text = "game over"
-            main_LBL_number2.text = "game over"
         }
     }
-    
-    func getImageName(for image: UIImage) -> String{
-        if let assetName = image.imageAsset?.value(forKey: "assetName") as? String{
-            return assetName
-        }
-        return ""
-    }
-    
-    func updateScores(for player1:Int, and player2: Int){
-        if(player1 > player2){
-            score1 += 1
-        }else{
-            score2 += 1
-        }
-        updateTxtScore()
-    }
-    
-    func updateTxtScore(){
-        main_LBL_score1.text = "\(score1)"
-        main_LBL_score2.text = "\(score2)"
-    }
-}
 
+    extension ViewController: CallBack_Score {
+        func score(score1: Int, score2: Int, card1Value: Int?, card2Value: Int?) {
+            self.score1 = score1
+            self.score2 = score2
+            if currentIndex >= imagesPlayer1.count {
+                main_LBL_number1.text = "Game Over"
+                main_LBL_number2.text = ""
+                main_IMG_card1.image = nil
+                main_IMG_card2.image = nil
+            }else {
+                updateUI(card1Value: card1Value, card2Value: card2Value)
+            }
+            
+        }
+    }
