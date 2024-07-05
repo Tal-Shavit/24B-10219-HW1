@@ -4,6 +4,7 @@ import UIKit
 
 protocol CallBack_Score {
     func score(currentCard: Int, card1Value: Int?, card2Value: Int?, showBack: Bool)
+    func gameOver()
 }
 
 class Detector {
@@ -51,6 +52,7 @@ class Detector {
 
             } else {
                 t.invalidate()
+                callback?.gameOver()
             }
         case 3:
             callback?.score(currentCard: currentCard, card1Value: nil, card2Value: nil, showBack: true)

@@ -77,4 +77,10 @@ class ViewController: UIViewController {
                
            }
        }
+       
+       func gameOver() {
+           if let gameOverVC = storyboard?.instantiateViewController(withIdentifier: "GameOverController") as? GameOverController{
+               navigationController?.pushViewController(gameOverVC, animated: true)
+           }
+       }
    }
