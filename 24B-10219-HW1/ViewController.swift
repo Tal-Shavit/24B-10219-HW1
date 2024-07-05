@@ -4,44 +4,31 @@ import UIKit
 class ViewController: UIViewController {
 
     @IBOutlet weak var main_LBL_scorePlayer1: UILabel!
-    
     @IBOutlet weak var main_LBL_scorePlayer2: UILabel!
     @IBOutlet weak var main_IMG_card1: UIImageView!
-    
     @IBOutlet weak var main_IMG_card2: UIImageView!
-    var imagesPlayer1 = [#imageLiteral(resourceName: "4_of_hearts"), #imageLiteral(resourceName: "2_of_diamonds"), #imageLiteral(resourceName: "9_of_hearts"), #imageLiteral(resourceName: "1_of_clubs"), #imageLiteral(resourceName: "3_of_diamonds"), #imageLiteral(resourceName: "2_of_diamonds"), #imageLiteral(resourceName: "10_of_clubs"), #imageLiteral(resourceName: "7_of_spades"), #imageLiteral(resourceName: "3_of_diamonds"), #imageLiteral(resourceName: "1_of_spades")]
-    var imagesPlayer2 = [#imageLiteral(resourceName: "3_of_diamonds"), #imageLiteral(resourceName: "11_of_hearts"), #imageLiteral(resourceName: "4_of_clubs"), #imageLiteral(resourceName: "12_of_clubs"), #imageLiteral(resourceName: "2_of_clubs"), #imageLiteral(resourceName: "3_of_diamonds"), #imageLiteral(resourceName: "12_of_clubs"), #imageLiteral(resourceName: "9_of_spades"), #imageLiteral(resourceName: "1_of_hearts"), #imageLiteral(resourceName: "1_of_diamonds")]
+    
+    var imagesPlayer1 : [UIImage] = []
+    var imagesPlayer2 : [UIImage] = []
     var score1 = 0, score2 = 0
     var myDetector : Detector?
     let backCardImage = UIImage(named: "card")
-    
-    
-    let cardValues: [String: Int] = [
-        "8_of_spades": 8,
-        "2_of_diamonds": 2,
-        "9_of_hearts": 9,
-        "1_of_clubs": 1,
-        "3_of_diamonds": 3,
-        "10_of_clubs": 10,
-        "7_of_spades": 7,
-        "1_of_spades": 1,
-        "11_of_hearts": 11,
-        "4_of_clubs": 4,
-        "4_of_hearts": 4,
-        "12_of_clubs": 12,
-        "2_of_clubs": 2,
-        "9_of_spades": 9,
-        "1_of_hearts": 1,
-        "1_of_diamonds": 1
-    ]
+
     
     override func viewDidLoad() {
            super.viewDidLoad()
+        
+        let player1Cards = CardManeger.shared.getRandomCard()
+        let player2Cards = CardManeger.shared.getRandomCard()
+        
+        imagesPlayer1 = player1Cards.compactMap{ UIImage(named: $0)}
+        imagesPlayer2 = player2Cards.compactMap{ UIImage(named: $0)}
+        
         main_LBL_scorePlayer1.text = "\(0)"
         main_LBL_scorePlayer2.text = "\(0)"
         main_IMG_card1.image = backCardImage
         main_IMG_card2.image = backCardImage
-           myDetector = Detector(callBack: self, cardValues: cardValues, imagesPlayer1: imagesPlayer1, imagesPlayer2: imagesPlayer2, backCardImage: backCardImage)
+           myDetector = Detector(callBack: self, imagesPlayer1: imagesPlayer1, imagesPlayer2: imagesPlayer2)
            myDetector?.startGame()
        }
    }

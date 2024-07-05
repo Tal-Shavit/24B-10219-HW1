@@ -14,17 +14,13 @@ class Detector {
     var timerCount = 0
     var score1 = 0
     var score2 = 0
-    let cardValues: [String: Int]
     let imagesPlayer1: [UIImage]
     let imagesPlayer2: [UIImage]
-    let backCardImage: UIImage?
     
-    init(callBack: CallBack_Score, cardValues: [String: Int], imagesPlayer1: [UIImage], imagesPlayer2: [UIImage], backCardImage: UIImage?) {
+    init(callBack: CallBack_Score, imagesPlayer1: [UIImage], imagesPlayer2: [UIImage]) {
         self.callback = callBack
-        self.cardValues = cardValues
         self.imagesPlayer1 = imagesPlayer1
         self.imagesPlayer2 = imagesPlayer2
-        self.backCardImage = backCardImage
     }
     
     func startGame() {
@@ -38,16 +34,13 @@ class Detector {
                 let card1 = imagesPlayer1[currentCard]
                 let card2 = imagesPlayer2[currentCard]
                 
-                let card1Value = cardValues[getImageName(for: card1)] ?? 0
-                let card2Value = cardValues[getImageName(for: card2)] ?? 0
-               
-                callback?.score(currentCard: currentCard, card1Value: card1Value, card2Value: card2Value, showBack: false)
-                
-                if card1Value > card2Value{
-                    score1 += 1
-                }
-                else if card2Value > card1Value{
-                    score2 += 1
+                if let card1Name = CardManeger.shared.getImageName(for: card1), let card2Name = CardManeger.shared.getImageName(for: card2){
+                    let card1Value = CardManeger.shared.getValue(for: card1Name)
+                    let card2Value = CardManeger.shared.getValue(for: card2Name)
+                    
+                    callback?.score(currentCard: currentCard, card1Value: card1Value, card2Value: card2Value, showBack: false)
+                    
+                    
                 }
 
             } else {

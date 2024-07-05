@@ -18,6 +18,7 @@
 		D7061A852C32BDD7006BF63F /* _4B_10219_HW1UITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7061A842C32BDD7006BF63F /* _4B_10219_HW1UITestsLaunchTests.swift */; };
 		D7FD5C9C2C3703F000C994B8 /* GameController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FD5C9B2C3703F000C994B8 /* GameController.swift */; };
 		D7FD5C9E2C383D0800C994B8 /* GameOverController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FD5C9D2C383D0800C994B8 /* GameOverController.swift */; };
+		D7FD5CA02C38484D00C994B8 /* CardsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FD5C9F2C38484D00C994B8 /* CardsManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		D7061A842C32BDD7006BF63F /* _4B_10219_HW1UITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = _4B_10219_HW1UITestsLaunchTests.swift; sourceTree = "<group>"; };
 		D7FD5C9B2C3703F000C994B8 /* GameController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameController.swift; sourceTree = "<group>"; };
 		D7FD5C9D2C383D0800C994B8 /* GameOverController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverController.swift; sourceTree = "<group>"; };
+		D7FD5C9F2C38484D00C994B8 /* CardsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +114,7 @@
 				D7061A6C2C32BDD7006BF63F /* LaunchScreen.storyboard */,
 				D7061A6F2C32BDD7006BF63F /* Info.plist */,
 				D7FD5C9B2C3703F000C994B8 /* GameController.swift */,
+				D7FD5C9F2C38484D00C994B8 /* CardsManager.swift */,
 			);
 			path = "24B-10219-HW1";
 			sourceTree = "<group>";
@@ -267,6 +270,7 @@
 				D7061A662C32BDD7006BF63F /* ViewController.swift in Sources */,
 				D7FD5C9C2C3703F000C994B8 /* GameController.swift in Sources */,
 				D7061A622C32BDD7006BF63F /* AppDelegate.swift in Sources */,
+				D7FD5CA02C38484D00C994B8 /* CardsManager.swift in Sources */,
 				D7FD5C9E2C383D0800C994B8 /* GameOverController.swift in Sources */,
 				D7061A642C32BDD7006BF63F /* SceneDelegate.swift in Sources */,
 			);
