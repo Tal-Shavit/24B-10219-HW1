@@ -2,12 +2,13 @@
 import UIKit
 
 class ViewController: UIViewController {
+
+    @IBOutlet weak var main_LBL_scorePlayer1: UILabel!
     
+    @IBOutlet weak var main_LBL_scorePlayer2: UILabel!
     @IBOutlet weak var main_IMG_card1: UIImageView!
-    @IBOutlet weak var main_IMG_card2: UIImageView!
-    @IBOutlet weak var main_LBL_score1: UILabel!
-    @IBOutlet weak var main_LBL_score2: UILabel!
     
+    @IBOutlet weak var main_IMG_card2: UIImageView!
     var imagesPlayer1 = [#imageLiteral(resourceName: "4_of_hearts"), #imageLiteral(resourceName: "2_of_diamonds"), #imageLiteral(resourceName: "9_of_hearts"), #imageLiteral(resourceName: "1_of_clubs"), #imageLiteral(resourceName: "3_of_diamonds"), #imageLiteral(resourceName: "2_of_diamonds"), #imageLiteral(resourceName: "10_of_clubs"), #imageLiteral(resourceName: "7_of_spades"), #imageLiteral(resourceName: "3_of_diamonds"), #imageLiteral(resourceName: "1_of_spades")]
     var imagesPlayer2 = [#imageLiteral(resourceName: "3_of_diamonds"), #imageLiteral(resourceName: "11_of_hearts"), #imageLiteral(resourceName: "4_of_clubs"), #imageLiteral(resourceName: "12_of_clubs"), #imageLiteral(resourceName: "2_of_clubs"), #imageLiteral(resourceName: "3_of_diamonds"), #imageLiteral(resourceName: "12_of_clubs"), #imageLiteral(resourceName: "9_of_spades"), #imageLiteral(resourceName: "1_of_hearts"), #imageLiteral(resourceName: "1_of_diamonds")]
     var score1 = 0, score2 = 0
@@ -36,8 +37,8 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
            super.viewDidLoad()
-           main_LBL_score1.text = "\(0)"
-           main_LBL_score2.text = "\(0)"
+        main_LBL_scorePlayer1.text = "\(0)"
+        main_LBL_scorePlayer2.text = "\(0)"
         main_IMG_card1.image = backCardImage
         main_IMG_card2.image = backCardImage
            myDetector = Detector(callBack: self, cardValues: cardValues, imagesPlayer1: imagesPlayer1, imagesPlayer2: imagesPlayer2, backCardImage: backCardImage)
@@ -66,11 +67,11 @@ class ViewController: UIViewController {
                DispatchQueue.main.asyncAfter(deadline: .now()+1){
                    if(card1Value > card2Value){
                        self.score1 += 1
-                       self.main_LBL_score1.text = "\(self.score1)"
+                       self.main_LBL_scorePlayer1.text = "\(self.score1)"
                    }
                    else if(card2Value > card1Value){
                        self.score2 += 1
-                       self.main_LBL_score2.text = "\(self.score2)"
+                       self.main_LBL_scorePlayer2.text = "\(self.score2)"
                    }
                }
                
