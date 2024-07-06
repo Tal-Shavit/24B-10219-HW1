@@ -7,8 +7,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var main_LBL_scorePlayer2: UILabel!
     @IBOutlet weak var main_IMG_card1: UIImageView!
     @IBOutlet weak var main_IMG_card2: UIImageView!
-    
     @IBOutlet weak var main_LBL_seconds: UILabel!
+    
     var imagesPlayer1 : [UIImage] = []
     var imagesPlayer2 : [UIImage] = []
     var score1 = 0, score2 = 0
@@ -20,6 +20,8 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
            super.viewDidLoad()
+        
+        self.navigationItem.hidesBackButton = true
         
         let playerCards = CardManeger.shared.getRandomCard()
         let player1Cards = playerCards[0]
