@@ -26,11 +26,11 @@ class GameOverController: UIViewController {
         
     }
     
-    @IBAction func onBackToMenu(_ sender: Any) {
+    @IBAction func onBackToMenu(_ sender: UIButton) {
         if let navigationController = navigationController {
-                    for view in navigationController.viewControllers {
-                        if view is MainController {
-                            navigationController.popToViewController(view, animated: true)
+            for viewControllers in navigationController.viewControllers {
+                        if viewControllers is MainController {
+                            navigationController.popToViewController(viewControllers, animated: true)
                             return
                         }
                     }
