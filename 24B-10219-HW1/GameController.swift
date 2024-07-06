@@ -3,6 +3,7 @@ import Foundation
 import UIKit
 
 protocol CallBack_Score {
+    func seconds(time: Int)
     func score(currentCard: Int, card1Value: Int?, card2Value: Int?, showBack: Bool)
     func gameOver()
 }
@@ -12,8 +13,8 @@ class Detector {
     var timer: Timer?
     var currentCard = 0
     var timerCount = 0
-    var score1 = 0
-    var score2 = 0
+    var seconds = 0
+  
     let imagesPlayer1: [UIImage]
     let imagesPlayer2: [UIImage]
     
@@ -54,12 +55,16 @@ class Detector {
             break
         }
         timerCount = (timerCount + 1) % 5
+        
+        seconds += 1
+        callback?.seconds(time: seconds)
+        if(seconds == 5){
+            seconds = 0
+        }
+        
     }
     
-    func getImageName(for image: UIImage) -> String {
-        if let assetName = image.imageAsset?.value(forKey: "assetName") as? String {
-            return assetName
-        }
-        return ""
+    func getImageName(for image: UIImage) -> String? {
+        return image.imageAsset?.value(forKey: "assetName") as? String
     }
 }

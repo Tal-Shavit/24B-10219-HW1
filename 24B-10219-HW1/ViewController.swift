@@ -8,6 +8,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var main_IMG_card1: UIImageView!
     @IBOutlet weak var main_IMG_card2: UIImageView!
     
+    @IBOutlet weak var main_LBL_seconds: UILabel!
     var imagesPlayer1 : [UIImage] = []
     var imagesPlayer2 : [UIImage] = []
     var score1 = 0, score2 = 0
@@ -25,10 +26,12 @@ class ViewController: UIViewController {
         imagesPlayer1 = player1Cards.compactMap{ UIImage(named: $0)}
         imagesPlayer2 = player2Cards.compactMap{ UIImage(named: $0)}
         
+        main_LBL_seconds.text = "\(0)"
         main_LBL_scorePlayer1.text = "\(0)"
         main_LBL_scorePlayer2.text = "\(0)"
         main_IMG_card1.image = backCardImage
         main_IMG_card2.image = backCardImage
+        
            myDetector = Detector(callBack: self, imagesPlayer1: imagesPlayer1, imagesPlayer2: imagesPlayer2)
            myDetector?.startGame()
        }
@@ -40,7 +43,11 @@ class ViewController: UIViewController {
         }
    }
 
-   extension ViewController: CallBack_Score {
+extension ViewController: CallBack_Score {
+    func seconds(time: Int) {
+        main_LBL_seconds.text = "\(time)"
+    }
+    
        func score(currentCard: Int, card1Value: Int?, card2Value: Int?, showBack: Bool) {
            if showBack {
                flipCard(main_IMG_card1, toImage: backCardImage!)
@@ -73,9 +80,9 @@ class ViewController: UIViewController {
        }
        
        func gameOver() {
+           print("gameoverrrr")
            if let gameOverVC = storyboard?.instantiateViewController(withIdentifier: "GameOverController") as? GameOverController{
-              // navigationController?.pushViewController(gameOverVC, animated: true)
-               self.present(gameOverVC, animated: true, completion: nil)
+               self.navigationController?.pushViewController(gameOverVC, animated: true)
            }
        }
    }
