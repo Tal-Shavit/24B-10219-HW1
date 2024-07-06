@@ -14,6 +14,8 @@ class ViewController: UIViewController {
     var score1 = 0, score2 = 0
     var myDetector : Detector?
     let backCardImage = UIImage(named: "back_card")
+    var winnerScore = 0
+    var winnerName = ""
 
     
     override func viewDidLoad() {
@@ -80,9 +82,21 @@ extension ViewController: CallBack_Score {
        }
        
        func gameOver() {
-           print("gameoverrrr")
            if let gameOverVC = storyboard?.instantiateViewController(withIdentifier: "GameOverController") as? GameOverController{
+               checkWinner()
+               gameOverVC.name = winnerName
+               gameOverVC.score = winnerScore
                self.navigationController?.pushViewController(gameOverVC, animated: true)
            }
        }
+    
+    func checkWinner(){
+        if(score1 > score2){
+            winnerName = "Player1"
+            winnerScore = score1
+        } else{
+            winnerName = "Player2"
+            winnerScore = score2
+        }
+    }
    }

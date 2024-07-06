@@ -40,8 +40,6 @@ class Detector {
                     let card2Value = CardManeger.shared.getValue(for: card2Name)
                     
                     callback?.score(currentCard: currentCard, card1Value: card1Value, card2Value: card2Value, showBack: false)
-                    
-                    
                 }
 
             } else {
