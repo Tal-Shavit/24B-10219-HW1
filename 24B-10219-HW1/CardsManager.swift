@@ -129,8 +129,16 @@ func getImageName(for image: UIImage) -> String? {
     return image.imageAsset?.value(forKey: "assetName") as? String
 }
     
-    func getRandomCard() -> [String]{
-        return allCardNames.shuffled().prefix(10).map{$0}
+    func getRandomCard() -> [[String]]{
+        let playerCount = 2
+        let cardsPerPlayer = 10
+        let shuffleCards = allCardNames.shuffled().prefix(playerCount * cardsPerPlayer)
+        var cards: [[String]] = []
+        for i in 0..<playerCount{
+            let playerCards = Array(shuffleCards[(i * cardsPerPlayer)..<(i * cardsPerPlayer + cardsPerPlayer)])
+            cards.append(playerCards)
+        }
+        return cards
     }
 }
 

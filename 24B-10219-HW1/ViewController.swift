@@ -18,8 +18,9 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
            super.viewDidLoad()
         
-        let player1Cards = CardManeger.shared.getRandomCard()
-        let player2Cards = CardManeger.shared.getRandomCard()
+        let playerCards = CardManeger.shared.getRandomCard()
+        let player1Cards = playerCards[0]
+        let player2Cards = playerCards[1]
         
         imagesPlayer1 = player1Cards.compactMap{ UIImage(named: $0)}
         imagesPlayer2 = player2Cards.compactMap{ UIImage(named: $0)}
