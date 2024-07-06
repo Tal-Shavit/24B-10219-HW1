@@ -12,7 +12,7 @@ class ViewController: UIViewController {
     var imagesPlayer2 : [UIImage] = []
     var score1 = 0, score2 = 0
     var myDetector : Detector?
-    let backCardImage = UIImage(named: "card")
+    let backCardImage = UIImage(named: "back_card")
 
     
     override func viewDidLoad() {
@@ -31,21 +31,27 @@ class ViewController: UIViewController {
            myDetector = Detector(callBack: self, imagesPlayer1: imagesPlayer1, imagesPlayer2: imagesPlayer2)
            myDetector?.startGame()
        }
+    
+    func flipCard(_ imageView: UIImageView, toImage: UIImage) {
+            UIView.transition(with: imageView, duration: 0.5, options: .transitionFlipFromRight, animations: {
+                imageView.image = toImage
+            }, completion: nil)
+        }
    }
 
    extension ViewController: CallBack_Score {
        func score(currentCard: Int, card1Value: Int?, card2Value: Int?, showBack: Bool) {
            if showBack {
-               main_IMG_card1.image = backCardImage
-               main_IMG_card2.image = backCardImage
+               flipCard(main_IMG_card1, toImage: backCardImage!)
+               flipCard(main_IMG_card2, toImage: backCardImage!)
            } else if currentCard < imagesPlayer1.count {
                let card1 = imagesPlayer1[currentCard]
                let card2 = imagesPlayer2[currentCard]
                
               changeScore(card1Value: card1Value, card2Value: card2Value)
                
-               main_IMG_card1.image = card1
-               main_IMG_card2.image = card2
+               flipCard(main_IMG_card1, toImage: card1)
+               flipCard(main_IMG_card2, toImage: card2)
            }
        }
        
@@ -67,7 +73,8 @@ class ViewController: UIViewController {
        
        func gameOver() {
            if let gameOverVC = storyboard?.instantiateViewController(withIdentifier: "GameOverController") as? GameOverController{
-               navigationController?.pushViewController(gameOverVC, animated: true)
+              // navigationController?.pushViewController(gameOverVC, animated: true)
+               self.present(gameOverVC, animated: true, completion: nil)
            }
        }
    }

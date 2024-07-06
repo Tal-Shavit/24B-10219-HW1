@@ -19,7 +19,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="214" translatesAutoresizingMaskIntoConstraints="NO" id="IHY-K6-Bct">
                                 <rect key="frame" x="119" y="120" width="614" height="250"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="10_of_diamonds" translatesAutoresizingMaskIntoConstraints="NO" id="F1O-oe-IA4">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="247" verticalHuggingPriority="251" image="10_of_diamonds" translatesAutoresizingMaskIntoConstraints="NO" id="F1O-oe-IA4">
                                         <rect key="frame" x="0.0" y="0.0" width="200" height="250"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="200" id="eE2-jf-0UC"/>
@@ -111,7 +111,7 @@
         <!--Game Over Controller-->
         <scene sceneID="qWM-Cb-qgh">
             <objects>
-                <viewController id="8ix-P5-mfj" customClass="GameOverController" customModule="_4B_10219_HW1" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="GameOverContoller" id="8ix-P5-mfj" customClass="GameOverController" customModule="_4B_10219_HW1" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hqp-JC-vRL">
                         <rect key="frame" x="0.0" y="0.0" width="852" height="393"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
