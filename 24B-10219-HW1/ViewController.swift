@@ -45,6 +45,23 @@ class ViewController: UIViewController {
                 imageView.image = toImage
             }, completion: nil)
         }
+    
+    
+    func changeScore(card1Value: Int?, card2Value: Int?){
+        if let card1Value = card1Value, let card2Value = card2Value {
+            DispatchQueue.main.asyncAfter(deadline: .now()+1){
+                if(card1Value > card2Value){
+                    self.score1 += 1
+                    self.main_LBL_scorePlayer1.text = "\(self.score1)"
+                }
+                else if(card2Value > card1Value){
+                    self.score2 += 1
+                    self.main_LBL_scorePlayer2.text = "\(self.score2)"
+                }
+            }
+            
+        }
+    }
    }
 
 extension ViewController: CallBack_Score {
@@ -67,21 +84,6 @@ extension ViewController: CallBack_Score {
            }
        }
        
-       func changeScore(card1Value: Int?, card2Value: Int?){
-           if let card1Value = card1Value, let card2Value = card2Value {
-               DispatchQueue.main.asyncAfter(deadline: .now()+1){
-                   if(card1Value > card2Value){
-                       self.score1 += 1
-                       self.main_LBL_scorePlayer1.text = "\(self.score1)"
-                   }
-                   else if(card2Value > card1Value){
-                       self.score2 += 1
-                       self.main_LBL_scorePlayer2.text = "\(self.score2)"
-                   }
-               }
-               
-           }
-       }
        
        func gameOver() {
            if let gameOverVC = storyboard?.instantiateViewController(withIdentifier: "GameOverController") as? GameOverController{

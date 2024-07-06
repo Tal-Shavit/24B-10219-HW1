@@ -9,6 +9,7 @@ class MainController: UIViewController {
     @IBOutlet weak var main_STACK_east: UIStackView!
     @IBOutlet weak var main_STACK_west: UIStackView!
     @IBOutlet weak var main_LBL_east: UILabel!
+    @IBOutlet weak var main_LBL_side: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -16,9 +17,10 @@ class MainController: UIViewController {
         UserDefaults.standard.removeObject(forKey: "userName")/////////////////////////////////to delete
         
         main_LBL_userName.isHidden = true
-        // main_BTN_start.isHidden = true
+        main_BTN_start.isHidden = true
         main_STACK_east.isHidden = true
         main_STACK_west.isHidden = true
+        main_LBL_side.isHidden = true
         
         
         let text = "Insert Name"
@@ -54,8 +56,8 @@ class MainController: UIViewController {
                     self.main_STACK_east.isHidden = false
                     self.main_STACK_west.isHidden = false
                     self.main_LBL_east.backgroundColor = .yellow
-                    
-                    // self.main_BTN_start.isHidden = false
+                    self.main_LBL_side.isHidden = false
+                    self.main_BTN_start.isHidden = false
                 }
             }
         }

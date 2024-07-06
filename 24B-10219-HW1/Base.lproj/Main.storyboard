@@ -325,11 +325,18 @@
                                     <constraint firstItem="nV4-Rg-fft" firstAttribute="centerX" secondItem="K2u-Mz-Ji4" secondAttribute="centerX" id="wWd-J6-aHe"/>
                                 </constraints>
                             </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You Are At The East Side" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GLL-FE-PDs">
+                                <rect key="frame" x="354" y="180.5" width="188" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="hUu-zc-LTz"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="i9r-gw-OwP" firstAttribute="centerX" secondItem="Nvb-Ld-YZD" secondAttribute="centerX" id="E4u-3e-3w7"/>
+                            <constraint firstItem="GLL-FE-PDs" firstAttribute="centerX" secondItem="Nvb-Ld-YZD" secondAttribute="centerX" id="HM9-y9-7ai"/>
                             <constraint firstItem="i9r-gw-OwP" firstAttribute="top" secondItem="u80-mp-W5P" secondAttribute="bottom" constant="16" id="ISR-aU-0Jj"/>
                             <constraint firstItem="x1p-8R-es3" firstAttribute="centerX" secondItem="Nvb-Ld-YZD" secondAttribute="centerX" id="IiT-UA-DXx"/>
                             <constraint firstItem="x1p-8R-es3" firstAttribute="centerX" secondItem="Nvb-Ld-YZD" secondAttribute="centerX" id="Jbb-Ta-jao"/>
@@ -339,6 +346,7 @@
                             <constraint firstItem="hUu-zc-LTz" firstAttribute="bottom" secondItem="x1p-8R-es3" secondAttribute="bottom" constant="32" id="cvC-9k-Kfj"/>
                             <constraint firstItem="hUu-zc-LTz" firstAttribute="trailing" secondItem="TfM-3J-Xie" secondAttribute="trailing" constant="16" id="hbS-w2-Gcw"/>
                             <constraint firstItem="TfM-3J-Xie" firstAttribute="centerY" secondItem="Nvb-Ld-YZD" secondAttribute="centerY" id="ie1-eP-8Bm"/>
+                            <constraint firstItem="GLL-FE-PDs" firstAttribute="top" secondItem="i9r-gw-OwP" secondAttribute="bottom" constant="16" id="r3F-HJ-vDf"/>
                             <constraint firstItem="u80-mp-W5P" firstAttribute="top" secondItem="hUu-zc-LTz" secondAttribute="top" constant="32" id="sXq-Tc-9rm"/>
                         </constraints>
                     </view>
@@ -347,6 +355,7 @@
                         <outlet property="Main_LBL_insertName" destination="u80-mp-W5P" id="Tgt-D5-IWw"/>
                         <outlet property="main_BTN_start" destination="x1p-8R-es3" id="mTP-iS-pim"/>
                         <outlet property="main_LBL_east" destination="ksC-Yv-rob" id="qED-al-GU4"/>
+                        <outlet property="main_LBL_side" destination="GLL-FE-PDs" id="IVk-G8-nqF"/>
                         <outlet property="main_LBL_userName" destination="i9r-gw-OwP" id="mPb-UY-a3m"/>
                         <outlet property="main_STACK_east" destination="TfM-3J-Xie" id="yfh-FO-RC7"/>
                         <outlet property="main_STACK_west" destination="K2u-Mz-Ji4" id="YKf-c0-eEH"/>
