@@ -1,9 +1,3 @@
-//
-//  SceneDelegate.swift
-//  24B-10219-HW1
-//
-//  Created by Student8 on 01/07/2024.
-//
 
 import UIKit
 
