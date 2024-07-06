@@ -346,6 +346,7 @@
                     <connections>
                         <outlet property="Main_LBL_insertName" destination="u80-mp-W5P" id="Tgt-D5-IWw"/>
                         <outlet property="main_BTN_start" destination="x1p-8R-es3" id="mTP-iS-pim"/>
+                        <outlet property="main_LBL_east" destination="ksC-Yv-rob" id="qED-al-GU4"/>
                         <outlet property="main_LBL_userName" destination="i9r-gw-OwP" id="mPb-UY-a3m"/>
                         <outlet property="main_STACK_east" destination="TfM-3J-Xie" id="yfh-FO-RC7"/>
                         <outlet property="main_STACK_west" destination="K2u-Mz-Ji4" id="YKf-c0-eEH"/>

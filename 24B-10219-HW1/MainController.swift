@@ -8,6 +8,7 @@ class MainController: UIViewController {
     @IBOutlet weak var main_BTN_start: UIButton!
     @IBOutlet weak var main_STACK_east: UIStackView!
     @IBOutlet weak var main_STACK_west: UIStackView!
+    @IBOutlet weak var main_LBL_east: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,6 +51,9 @@ class MainController: UIViewController {
                     self.main_LBL_userName.text = "Hi \(userName)"
                     self.main_LBL_userName.isHidden = false
                     self.main_LBL_insertName.isHidden = true
+                    self.main_STACK_east.isHidden = false
+                    self.main_STACK_west.isHidden = false
+                    self.main_LBL_east.backgroundColor = .yellow
                     
                     // self.main_BTN_start.isHidden = false
                 }
