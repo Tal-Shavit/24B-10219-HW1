@@ -134,11 +134,13 @@
                     </view>
                     <navigationItem key="navigationItem" id="96d-Cx-DhJ"/>
                     <connections>
-                        <outlet property="main_IMG_card1" destination="F1O-oe-IA4" id="SPi-ql-apW"/>
-                        <outlet property="main_IMG_card2" destination="9RF-Dg-9jE" id="oEf-fu-Dww"/>
-                        <outlet property="main_LBL_scorePlayer1" destination="klz-yg-cNk" id="CfS-se-fFQ"/>
-                        <outlet property="main_LBL_scorePlayer2" destination="ksh-lW-hgs" id="ocF-6S-rEE"/>
-                        <outlet property="main_LBL_seconds" destination="tx8-Eq-PAN" id="mVt-lU-5wg"/>
+                        <outlet property="controller_IMG_card1" destination="F1O-oe-IA4" id="SPi-ql-apW"/>
+                        <outlet property="controller_IMG_card2" destination="9RF-Dg-9jE" id="oEf-fu-Dww"/>
+                        <outlet property="controller_LBL_name1" destination="UeJ-Tz-nCz" id="pFR-Fl-1Zo"/>
+                        <outlet property="controller_LBL_name2" destination="eWI-vt-vlX" id="LTQ-C8-NeA"/>
+                        <outlet property="controller_LBL_scorePlayer1" destination="klz-yg-cNk" id="CfS-se-fFQ"/>
+                        <outlet property="controller_LBL_scorePlayer2" destination="ksh-lW-hgs" id="ocF-6S-rEE"/>
+                        <outlet property="controller_LBL_seconds" destination="tx8-Eq-PAN" id="mVt-lU-5wg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="a6p-1c-v5o" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -292,7 +294,10 @@
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="East Side" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ksC-Yv-rob">
-                                        <rect key="frame" x="39.5" y="216" width="71" height="20.5"/>
+                                        <rect key="frame" x="0.0" y="216" width="150" height="20.5"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="150" id="d1P-5n-Auk"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -304,17 +309,20 @@
                                 </constraints>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="bottom" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="K2u-Mz-Ji4">
-                                <rect key="frame" x="64" y="89" width="150" height="236.5"/>
+                                <rect key="frame" x="64" y="89" width="200" height="236.5"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="West" translatesAutoresizingMaskIntoConstraints="NO" id="nV4-Rg-fft">
-                                        <rect key="frame" x="0.0" y="0.0" width="150" height="200"/>
+                                        <rect key="frame" x="50" y="0.0" width="150" height="200"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="200" id="GBK-HJ-ahu"/>
                                             <constraint firstAttribute="width" constant="150" id="fq0-e1-lSR"/>
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="West Side" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JR8-hA-FfI">
-                                        <rect key="frame" x="0.0" y="216" width="150" height="20.5"/>
+                                        <rect key="frame" x="0.0" y="216" width="200" height="20.5"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="200" id="d8c-cO-ifD"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -355,8 +363,10 @@
                         <outlet property="Main_LBL_insertName" destination="u80-mp-W5P" id="Tgt-D5-IWw"/>
                         <outlet property="main_BTN_start" destination="x1p-8R-es3" id="mTP-iS-pim"/>
                         <outlet property="main_LBL_east" destination="ksC-Yv-rob" id="qED-al-GU4"/>
+                        <outlet property="main_LBL_insertName" destination="u80-mp-W5P" id="LE3-Lv-iuI"/>
                         <outlet property="main_LBL_side" destination="GLL-FE-PDs" id="IVk-G8-nqF"/>
                         <outlet property="main_LBL_userName" destination="i9r-gw-OwP" id="mPb-UY-a3m"/>
+                        <outlet property="main_LBL_west" destination="JR8-hA-FfI" id="N5q-sx-Cl9"/>
                         <outlet property="main_STACK_east" destination="TfM-3J-Xie" id="yfh-FO-RC7"/>
                         <outlet property="main_STACK_west" destination="K2u-Mz-Ji4" id="YKf-c0-eEH"/>
                     </connections>

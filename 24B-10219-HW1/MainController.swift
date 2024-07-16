@@ -1,5 +1,6 @@
 import Foundation
 import UIKit
+import CoreLocation
 
 class MainController: UIViewController {
     
@@ -9,10 +10,16 @@ class MainController: UIViewController {
     @IBOutlet weak var main_STACK_east: UIStackView!
     @IBOutlet weak var main_STACK_west: UIStackView!
     @IBOutlet weak var main_LBL_east: UILabel!
+    @IBOutlet weak var main_LBL_west: UILabel!
     @IBOutlet weak var main_LBL_side: UILabel!
+    
+    var locationManager : CLLocationManager!
+    var isEast : Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        initLocation()
         
         UserDefaults.standard.removeObject(forKey: "userName")/////////////////////////////////to delete
         
@@ -21,7 +28,6 @@ class MainController: UIViewController {
         main_STACK_east.isHidden = true
         main_STACK_west.isHidden = true
         main_LBL_side.isHidden = true
-        
         
         let text = "Insert Name"
         let attributedString = NSMutableAttributedString(string: text)
@@ -32,10 +38,16 @@ class MainController: UIViewController {
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(insertNameClicked))
         main_LBL_insertName.addGestureRecognizer(tap)
+        
+        locationManager.startUpdatingLocation()
     }
     
     @IBAction func onClickStart(_ sender: Any) {
         if let startGameVC = storyboard?.instantiateViewController(withIdentifier: "ViewController") as? ViewController{
+            if let userName = UserDefaults.standard.string(forKey: "userName"){
+                startGameVC.userName = userName
+                startGameVC.isEast = self.isEast
+            }
             self.navigationController?.pushViewController(startGameVC, animated: true)
         }
     }
@@ -55,7 +67,6 @@ class MainController: UIViewController {
                     self.main_LBL_insertName.isHidden = true
                     self.main_STACK_east.isHidden = false
                     self.main_STACK_west.isHidden = false
-                    self.main_LBL_east.backgroundColor = .yellow
                     self.main_LBL_side.isHidden = false
                     self.main_BTN_start.isHidden = false
                 }
@@ -64,4 +75,41 @@ class MainController: UIViewController {
         alertController.addAction(confirmAction)
         present(alertController, animated: true, completion: nil)
     }
+    
+    func initLocation(){
+        locationManager = CLLocationManager()
+        locationManager.delegate = self
+        locationManager.requestWhenInUseAuthorization()
+    }
 }
+
+extension MainController: CLLocationManagerDelegate{
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations
+                         locations: [CLLocation]) {
+        
+        if let location = locations.last{
+            locationManager.stopUpdatingLocation()
+            let lon = location.coordinate.longitude
+            let middlePointLon = 34.817549168324334
+            
+            isEast = lon > middlePointLon
+            main_LBL_side.text = isEast ? "You Are At The East Side" : "You Are At The West Side"
+            if isEast{
+                self.main_LBL_east.backgroundColor = .yellow
+            }
+            else{
+                self.main_LBL_west.backgroundColor = .yellow
+            }
+        }
+    }
+        
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        print("Error=\(error)")
+    }
+        
+    
+    }
+    
+
+
