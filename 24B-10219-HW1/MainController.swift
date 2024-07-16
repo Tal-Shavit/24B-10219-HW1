@@ -23,10 +23,10 @@ class MainController: UIViewController {
         
         initLocation()
         
-        UserDefaults.standard.removeObject(forKey: "userName")/////////////////////////////////to delete
+        //UserDefaults.standard.removeObject(forKey: "userName")/////////////////////////////////to delete
         
         initViews()
-        checkIfNameExist()
+        
         
         locationManager.startUpdatingLocation()
     }
@@ -42,6 +42,13 @@ class MainController: UIViewController {
     }
     
     func initInsertName(){
+        main_LBL_insertName.isHidden = false
+        main_LBL_userName.isHidden = true
+        main_BTN_start.isHidden = true
+        main_STACK_east.isHidden = true
+        main_STACK_west.isHidden = true
+        main_LBL_side.isHidden = true
+        
         let text = "Insert Name"
         let attributedString = NSMutableAttributedString(string: text)
         attributedString.addAttribute(.underlineStyle, value: NSUnderlineStyle.single.rawValue, range: NSRange(location: 0, length: text.count))
@@ -77,19 +84,25 @@ class MainController: UIViewController {
     }
     
     func initViews(){
-        main_LBL_userName.isHidden = true
-        main_BTN_start.isHidden = true
-        main_STACK_east.isHidden = true
-        main_STACK_west.isHidden = true
-        main_LBL_side.isHidden = true
+        self.main_LBL_userName.isHidden = true
+        self.main_LBL_insertName.isHidden = true
+        self.main_STACK_east.isHidden = true
+        self.main_STACK_west.isHidden = true
+        self.main_LBL_side.isHidden = true
+        self.main_BTN_start.isHidden = true
         
-        initInsertName()
+        checkIfNameExist()
     }
     
     func checkIfNameExist(){
         if let userNameExist = UserDefaults.standard.string(forKey: "userName"){
             self.userName = userNameExist
-            updateUI()
+            self.main_LBL_userName.text = "Hi \(userNameExist)"
+            self.main_LBL_userName.isHidden = false
+            self.main_LBL_insertName.isHidden = true
+        }
+        else{
+            initInsertName()
         }
     }
     
@@ -110,6 +123,10 @@ class MainController: UIViewController {
             else{
                 addBoarder(to: main_LBL_west)
             }
+        } else if let _ = userName {
+            self.main_LBL_userName.isHidden = false
+            self.main_LBL_insertName.isHidden = true
+            self.main_BTN_start.isHidden = true
         }
     }
     
@@ -134,6 +151,7 @@ extension MainController: CLLocationManagerDelegate{
             
             isEast = lon > middlePointLon
             self.locationRecived = true
+            self.updateUI()
             
         }
     }
