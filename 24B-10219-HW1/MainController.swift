@@ -15,6 +15,8 @@ class MainController: UIViewController {
     
     var locationManager : CLLocationManager!
     var isEast : Bool = false
+    var locationRecived : Bool = false
+    var userName: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,21 +25,8 @@ class MainController: UIViewController {
         
         UserDefaults.standard.removeObject(forKey: "userName")/////////////////////////////////to delete
         
-        main_LBL_userName.isHidden = true
-        main_BTN_start.isHidden = true
-        main_STACK_east.isHidden = true
-        main_STACK_west.isHidden = true
-        main_LBL_side.isHidden = true
-        
-        let text = "Insert Name"
-        let attributedString = NSMutableAttributedString(string: text)
-        attributedString.addAttribute(.underlineStyle, value: NSUnderlineStyle.single.rawValue, range: NSRange(location: 0, length: text.count))
-        
-        main_LBL_insertName.attributedText = attributedString
-        main_LBL_insertName.isUserInteractionEnabled = true
-        
-        let tap = UITapGestureRecognizer(target: self, action: #selector(insertNameClicked))
-        main_LBL_insertName.addGestureRecognizer(tap)
+        initViews()
+        checkIfNameExist()
         
         locationManager.startUpdatingLocation()
     }
@@ -52,6 +41,18 @@ class MainController: UIViewController {
         }
     }
     
+    func initInsertName(){
+        let text = "Insert Name"
+        let attributedString = NSMutableAttributedString(string: text)
+        attributedString.addAttribute(.underlineStyle, value: NSUnderlineStyle.single.rawValue, range: NSRange(location: 0, length: text.count))
+        
+        main_LBL_insertName.attributedText = attributedString
+        main_LBL_insertName.isUserInteractionEnabled = true
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(insertNameClicked))
+        main_LBL_insertName.addGestureRecognizer(tap)
+    }
+    
     @objc func insertNameClicked(){
         let alertController = UIAlertController(title: "Enter your name", message: nil, preferredStyle: .alert)
         alertController.addTextField { textField in
@@ -61,15 +62,8 @@ class MainController: UIViewController {
             if let name = alertController.textFields?.first?.text, !name.isEmpty {
                 let capitalFirstLetter = name.capitalized
                 UserDefaults.standard.set(capitalFirstLetter, forKey: "userName")
-                if let userName = UserDefaults.standard.string(forKey: "userName"){
-                    self.main_LBL_userName.text = "Hi \(userName)"
-                    self.main_LBL_userName.isHidden = false
-                    self.main_LBL_insertName.isHidden = true
-                    self.main_STACK_east.isHidden = false
-                    self.main_STACK_west.isHidden = false
-                    self.main_LBL_side.isHidden = false
-                    self.main_BTN_start.isHidden = false
-                }
+                self.userName = capitalFirstLetter
+                self.updateUI()
             }
         }
         alertController.addAction(confirmAction)
@@ -81,6 +75,45 @@ class MainController: UIViewController {
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
     }
+    
+    func initViews(){
+        main_LBL_userName.isHidden = true
+        main_BTN_start.isHidden = true
+        main_STACK_east.isHidden = true
+        main_STACK_west.isHidden = true
+        main_LBL_side.isHidden = true
+        
+        initInsertName()
+    }
+    
+    func checkIfNameExist(){
+        if let userNameExist = UserDefaults.standard.string(forKey: "userName"){
+            self.userName = userNameExist
+            updateUI()
+        }
+    }
+    
+    func updateUI(){
+        if locationRecived ,let name = userName{
+            self.main_LBL_userName.text = "Hi \(name)"
+            self.main_LBL_userName.isHidden = false
+            self.main_LBL_insertName.isHidden = true
+            self.main_STACK_east.isHidden = false
+            self.main_STACK_west.isHidden = false
+            self.main_LBL_side.isHidden = false
+            self.main_BTN_start.isHidden = false
+            
+            main_LBL_side.text = isEast ? "You Are At The East Side" : "You Are At The West Side"
+            if isEast{
+                self.main_LBL_east.backgroundColor = .yellow
+            }
+            else{
+                self.main_LBL_west.backgroundColor = .yellow
+            }
+        }
+    }
+    
+    
 }
 
 extension MainController: CLLocationManagerDelegate{
@@ -94,13 +127,8 @@ extension MainController: CLLocationManagerDelegate{
             let middlePointLon = 34.817549168324334
             
             isEast = lon > middlePointLon
-            main_LBL_side.text = isEast ? "You Are At The East Side" : "You Are At The West Side"
-            if isEast{
-                self.main_LBL_east.backgroundColor = .yellow
-            }
-            else{
-                self.main_LBL_west.backgroundColor = .yellow
-            }
+            self.locationRecived = true
+            
         }
     }
         

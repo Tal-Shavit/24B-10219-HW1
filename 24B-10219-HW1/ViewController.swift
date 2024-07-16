@@ -26,9 +26,6 @@ class ViewController: UIViewController {
            super.viewDidLoad()
         
         initVarFromMain()
-        
-        self.navigationItem.hidesBackButton = true
-        
         initViews()
         
         myDetector = Detector(callBack: self, imagesPlayer1: imagesPlayer1, imagesPlayer2: imagesPlayer2)
@@ -68,6 +65,8 @@ class ViewController: UIViewController {
     }
     
     func initViews(){
+        self.navigationItem.hidesBackButton = true
+        
         let playerCards = CardManeger.shared.getRandomCard()
         let player1Cards = playerCards[0]
         let player2Cards = playerCards[1]
