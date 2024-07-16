@@ -22,9 +22,6 @@ class MainController: UIViewController {
         super.viewDidLoad()
         
         initLocation()
-        
-        //UserDefaults.standard.removeObject(forKey: "userName")/////////////////////////////////to delete
-        
         initViews()
         
         
