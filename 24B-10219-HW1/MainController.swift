@@ -105,15 +105,21 @@ class MainController: UIViewController {
             
             main_LBL_side.text = isEast ? "You Are At The East Side" : "You Are At The West Side"
             if isEast{
-                self.main_LBL_east.backgroundColor = .yellow
+                addBoarder(to: main_LBL_east)
             }
             else{
-                self.main_LBL_west.backgroundColor = .yellow
+                addBoarder(to: main_LBL_west)
             }
         }
     }
     
-    
+    func addBoarder(to label: UILabel){
+        let color = UIColor(named: "General")
+        label.layer.borderColor = color?.cgColor
+        label.layer.borderWidth = 1.5
+        label.layer.cornerRadius = 8.0
+        label.layer.masksToBounds = true
+    }
 }
 
 extension MainController: CLLocationManagerDelegate{
@@ -131,13 +137,8 @@ extension MainController: CLLocationManagerDelegate{
             
         }
     }
-        
+    
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print("Error=\(error)")
     }
-        
-    
-    }
-    
-
-
+}

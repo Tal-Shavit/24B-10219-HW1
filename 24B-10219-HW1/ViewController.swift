@@ -2,7 +2,7 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    
     @IBOutlet weak var controller_LBL_name2: UILabel!
     @IBOutlet weak var controller_LBL_name1: UILabel!
     @IBOutlet weak var controller_LBL_scorePlayer1: UILabel!
@@ -16,27 +16,27 @@ class ViewController: UIViewController {
     var score1 = 0, score2 = 0
     var myDetector : Detector?
     let backCardImage = UIImage(named: "back_card")
-    var winnerScore = 0
-    var winnerName = ""
-    var userName = ""
+    var winnerScore : Int = 0
+    var winnerName : String = ""
+    var userName : String = ""
     var isEast : Bool = false
-
+    
     
     override func viewDidLoad() {
-           super.viewDidLoad()
+        super.viewDidLoad()
         
         initVarFromMain()
         initViews()
         
         myDetector = Detector(callBack: self, imagesPlayer1: imagesPlayer1, imagesPlayer2: imagesPlayer2)
         myDetector?.startGame()
-       }
+    }
     
     func flipCard(_ imageView: UIImageView, toImage: UIImage) {
-            UIView.transition(with: imageView, duration: 0.5, options: .transitionFlipFromRight, animations: {
-                imageView.image = toImage
-            }, completion: nil)
-        }
+        UIView.transition(with: imageView, duration: 0.5, options: .transitionFlipFromRight, animations: {
+            imageView.image = toImage
+        }, completion: nil)
+    }
     
     
     func changeScore(card1Value: Int?, card2Value: Int?){
@@ -80,37 +80,36 @@ class ViewController: UIViewController {
         controller_IMG_card1.image = backCardImage
         controller_IMG_card2.image = backCardImage
     }
-   }
+}
 
 extension ViewController: CallBack_Score {
     func seconds(time: Int) {
         controller_LBL_seconds.text = "\(time)"
     }
     
-       func score(currentCard: Int, card1Value: Int?, card2Value: Int?, showBack: Bool) {
-           if showBack {
-               flipCard(controller_IMG_card1, toImage: backCardImage!)
-               flipCard(controller_IMG_card2, toImage: backCardImage!)
-           } else if currentCard < imagesPlayer1.count {
-               let card1 = imagesPlayer1[currentCard]
-               let card2 = imagesPlayer2[currentCard]
-               
-              changeScore(card1Value: card1Value, card2Value: card2Value)
-               
-               flipCard(controller_IMG_card1, toImage: card1)
-               flipCard(controller_IMG_card2, toImage: card2)
-           }
-       }
-       
-       
-       func gameOver() {
-           if let gameOverVC = storyboard?.instantiateViewController(withIdentifier: "GameOverController") as? GameOverController{
-               checkWinner()
-               gameOverVC.name = winnerName
-               gameOverVC.score = winnerScore
-               self.navigationController?.pushViewController(gameOverVC, animated: true)
-           }
-       }
+    func score(currentCard: Int, card1Value: Int?, card2Value: Int?, showBack: Bool) {
+        if showBack {
+            flipCard(controller_IMG_card1, toImage: backCardImage!)
+            flipCard(controller_IMG_card2, toImage: backCardImage!)
+        } else if currentCard < imagesPlayer1.count {
+            let card1 = imagesPlayer1[currentCard]
+            let card2 = imagesPlayer2[currentCard]
+            
+            changeScore(card1Value: card1Value, card2Value: card2Value)
+            
+            flipCard(controller_IMG_card1, toImage: card1)
+            flipCard(controller_IMG_card2, toImage: card2)
+        }
+    }
+    
+    func gameOver() {
+        if let gameOverVC = storyboard?.instantiateViewController(withIdentifier: "GameOverController") as? GameOverController{
+            checkWinner()
+            gameOverVC.name = winnerName
+            gameOverVC.score = winnerScore
+            self.navigationController?.pushViewController(gameOverVC, animated: true)
+        }
+    }
     
     func checkWinner(){
         if(score1 > score2){
@@ -121,4 +120,4 @@ extension ViewController: CallBack_Score {
             winnerScore = score2
         }
     }
-   }
+}

@@ -16,6 +16,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="896" height="414"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="G6T-HQ-1L5">
+                                <rect key="frame" x="0.0" y="0.0" width="896" height="414"/>
+                            </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="75" translatesAutoresizingMaskIntoConstraints="NO" id="IHY-K6-Bct">
                                 <rect key="frame" x="140" y="136" width="616" height="220"/>
                                 <subviews>
@@ -47,7 +50,7 @@
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DWX-yr-4tr">
                                                 <rect key="frame" x="8" y="92" width="50" height="120"/>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <color key="backgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </view>
                                         </subviews>
                                         <constraints>
@@ -124,12 +127,16 @@
                         <viewLayoutGuide key="safeArea" id="VUd-0T-SC6"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="G6T-HQ-1L5" firstAttribute="top" secondItem="CuZ-dE-unK" secondAttribute="top" id="D0v-ud-wQr"/>
                             <constraint firstItem="r1X-A3-17T" firstAttribute="centerX" secondItem="CuZ-dE-unK" secondAttribute="centerX" id="QdQ-aQ-o8e"/>
                             <constraint firstItem="IHY-K6-Bct" firstAttribute="centerX" secondItem="CuZ-dE-unK" secondAttribute="centerX" id="S4M-wO-lxS"/>
+                            <constraint firstAttribute="trailing" secondItem="G6T-HQ-1L5" secondAttribute="trailing" id="j5G-dx-IDB"/>
                             <constraint firstItem="IHY-K6-Bct" firstAttribute="top" secondItem="r1X-A3-17T" secondAttribute="bottom" constant="10" id="jJh-2d-a7b"/>
+                            <constraint firstItem="G6T-HQ-1L5" firstAttribute="leading" secondItem="CuZ-dE-unK" secondAttribute="leading" id="lCO-tZ-2KG"/>
                             <constraint firstItem="r1X-A3-17T" firstAttribute="centerX" secondItem="VUd-0T-SC6" secondAttribute="centerX" id="mZQ-N5-faq"/>
                             <constraint firstItem="r1X-A3-17T" firstAttribute="centerX" secondItem="VUd-0T-SC6" secondAttribute="centerX" id="qoI-5v-Bza"/>
                             <constraint firstItem="r1X-A3-17T" firstAttribute="top" secondItem="VUd-0T-SC6" secondAttribute="top" constant="6" id="sag-uM-9H3"/>
+                            <constraint firstAttribute="bottom" secondItem="G6T-HQ-1L5" secondAttribute="bottom" id="vUw-bS-FLt"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="96d-Cx-DhJ"/>
@@ -417,6 +424,7 @@
         <image name="12_of_clubs" width="500" height="726"/>
         <image name="East" width="256" height="512"/>
         <image name="West" width="256" height="512"/>
+        <image name="background" width="1600" height="1066"/>
         <image name="stopwatch" width="512" height="512"/>
         <systemColor name="labelColor">
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

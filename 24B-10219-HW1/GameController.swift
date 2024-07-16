@@ -14,7 +14,7 @@ class Detector {
     var currentCard = 0
     var timerCount = 0
     var seconds = 0
-  
+    
     let imagesPlayer1: [UIImage]
     let imagesPlayer2: [UIImage]
     
@@ -26,7 +26,7 @@ class Detector {
     
     func startGame() {
         timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: updateGame(t:))
-        }
+    }
     
     func updateGame(t: Timer){
         switch timerCount{
@@ -41,7 +41,7 @@ class Detector {
                     
                     callback?.score(currentCard: currentCard, card1Value: card1Value, card2Value: card2Value, showBack: false)
                 }
-
+                
             } else {
                 t.invalidate()
                 callback?.gameOver()

@@ -14,7 +14,7 @@ class GameOverController: UIViewController {
         super.viewDidLoad()
         
         self.navigationItem.hidesBackButton = true
-    
+        
         gameOver_LBL_name.text = "\(name)"
         gameOver_LBL_score.text = "\(score)"
         
@@ -23,11 +23,11 @@ class GameOverController: UIViewController {
     @IBAction func onBackToMenu(_ sender: UIButton) {
         if let navigationController = navigationController {
             for viewControllers in navigationController.viewControllers {
-                        if viewControllers is MainController {
-                            navigationController.popToViewController(viewControllers, animated: true)
-                            return
-                        }
-                    }
+                if viewControllers is MainController {
+                    navigationController.popToViewController(viewControllers, animated: true)
+                    return
                 }
+            }
+        }
     }
 }
