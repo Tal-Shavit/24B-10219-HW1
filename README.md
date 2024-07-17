@@ -39,8 +39,7 @@ This is a card game application that simulates the classic game "War". The parti
 https://github.com/user-attachments/assets/85418d4d-b138-48df-aa68-6fd57aa2234c
 
 ### Game Play in Night Mode
-
-
+https://github.com/user-attachments/assets/19bbbfe9-aec5-45da-b24d-f7e2fc3143ca
 
 ## icon
  ![Simulator Screenshot - iPhone 14 Pro - 2024-07-16 at 19 45 50](https://github.com/user-attachments/assets/b20acd9b-0cc1-4f52-8bb1-cdf4ff8af57f)
