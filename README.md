@@ -35,6 +35,11 @@ This is a card game application that simulates the classic game "War". The parti
 - At the end of the game, go to the results screen to see your score and the winner.
 
 ## Videos
+### Game Play in Day Mode
+https://github.com/user-attachments/assets/85418d4d-b138-48df-aa68-6fd57aa2234c
+
+### Game Play in Night Mode
+
 
 
 ## icon
