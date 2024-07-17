@@ -26,7 +26,7 @@ This is a card game application that simulates the classic game "War". The parti
 - After 10 rounds, the game will transition to the results screen.
 - If there is a tie in the score, the computer will be declared the winner.
 
- ## Instructions for Use
+## Instructions for Use
 
 - Open the app and enter your name when prompted.
 - Wait for your location to be sampled and receive a notification about your location side (east or west).
@@ -34,7 +34,9 @@ This is a card game application that simulates the classic game "War". The parti
 - Watch the cards being displayed every five seconds.
 - At the end of the game, go to the results screen to see your score and the winner.
 
-  ## Videos
+## Videos
 
 
-  ## icon
+## icon
+ ![Simulator Screenshot - iPhone 14 Pro - 2024-07-16 at 19 45 50](https://github.com/user-attachments/assets/b20acd9b-0cc1-4f52-8bb1-cdf4ff8af57f)
+
